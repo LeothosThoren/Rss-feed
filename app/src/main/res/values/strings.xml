@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RssFeed</string>
+    <!-- Handling error -->
+    <string name="retry">Retry</string>
+    <string name="rss_error">An error occurred while loading the rss feed</string>
 </resources>
