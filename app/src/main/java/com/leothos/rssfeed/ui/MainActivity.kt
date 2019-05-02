@@ -1,7 +1,8 @@
-package com.leothos.rssfeed
+package com.leothos.rssfeed.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.leothos.rssfeed.R
 
 class MainActivity : AppCompatActivity() {
 
