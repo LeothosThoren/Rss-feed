@@ -1,10 +1,14 @@
 package com.leothos.rssfeed.ui.view_model
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.base.BaseViewModel
+import com.leothos.rssfeed.model.Rss
+import com.leothos.rssfeed.model.rss_feed.Item
 import com.leothos.rssfeed.network.RssFeedApi
+import com.leothos.rssfeed.ui.adapter.RssFeedAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -19,6 +23,7 @@ class RssFeedListViewModel : BaseViewModel() {
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadRssFeed() }
+    val rssFeedAdapter: RssFeedAdapter = RssFeedAdapter()
 
     init {
         loadRssFeed()
@@ -31,7 +36,8 @@ class RssFeedListViewModel : BaseViewModel() {
             .doOnSubscribe { onRetrieveRssFeedListStart() }
             .doOnTerminate { onRetrieveRssFeedListFinish() }
             .subscribe(
-                { onRetrieveRssFeedListSuccess() },
+                // Add result
+                { result -> onRetrieveRssFeedListSuccess(result) },
                 { onRetrieveRssFeedListError() }
             )
     }
@@ -55,11 +61,13 @@ class RssFeedListViewModel : BaseViewModel() {
      *
      * */
 
-    private fun onRetrieveRssFeedListSuccess() {
-
+    private fun onRetrieveRssFeedListSuccess(rssFeedList: List<Rss>) {
+        Log.d("Debug", "list content = ${rssFeedList[0]}")
+        rssFeedAdapter.updateRssList(rssFeedList)
     }
 
     private fun onRetrieveRssFeedListError() {
+        Log.d("Debug", "Error message")
         errorMessage.value = R.string.rss_error
     }
 

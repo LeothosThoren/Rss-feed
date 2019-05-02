@@ -26,10 +26,13 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:adapter="@{viewModel.getRssFeedAdapter()}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/rss_feed_List"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/rss_feed_List"
+                tools:listitem="@layout/item_rss_feed"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
