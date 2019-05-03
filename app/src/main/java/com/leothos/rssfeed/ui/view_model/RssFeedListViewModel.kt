@@ -61,9 +61,9 @@ class RssFeedListViewModel : BaseViewModel() {
      *
      * */
 
-    private fun onRetrieveRssFeedListSuccess(rssFeedList: List<Rss>) {
-        Log.d("Debug", "list content = ${rssFeedList[0]}")
-        rssFeedAdapter.updateRssList(rssFeedList)
+    private fun onRetrieveRssFeedListSuccess(rssFeedList: Rss) {
+        Log.d("Debug", "first content = ${rssFeedList.channel?.item?.get(0)?.title}")
+        rssFeedAdapter.updateRssList(rssFeedList.channel?.item as List<Item>)
     }
 
     private fun onRetrieveRssFeedListError() {

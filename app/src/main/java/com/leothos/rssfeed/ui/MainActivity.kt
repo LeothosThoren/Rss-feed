@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
          * */
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        // Configuration of the recycler view
         binding.rssFeedList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         viewModel = ViewModelProviders.of(this).get(RssFeedListViewModel::class.java)

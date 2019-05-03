@@ -1,4 +1,4 @@
-package com.leothos.rssfeed.injection
+package com.leothos.rssfeed.injection.module
 
 import com.leothos.rssfeed.network.RssFeedApi
 import com.leothos.rssfeed.utils.BASE_URL
@@ -8,7 +8,7 @@ import dagger.Reusable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 @Module
 object NetworkModule {
@@ -20,7 +20,7 @@ object NetworkModule {
     @Provides
     @Reusable
     @JvmStatic
-    internal fun provideRssFeedApi(retrofit: Retrofit) : RssFeedApi {
+    internal fun provideRssFeedApi(retrofit: Retrofit): RssFeedApi {
         return retrofit.create(RssFeedApi::class.java)
     }
 
@@ -34,7 +34,7 @@ object NetworkModule {
     internal fun provideRetrofitInterface(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(SimpleXmlConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
     }

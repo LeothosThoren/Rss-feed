@@ -1,27 +1,29 @@
 package com.leothos.rssfeed.model.rss_feed
 
-import com.google.gson.annotations.SerializedName
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.Root
 
+@Root(name = "item", strict = false)
 data class Item(
 
-    @field:SerializedName("image")
+    @Element(name = "image")
     val image: Image? = null,
 
-    @field:SerializedName("link")
+    @Element(name = "link")
     val link: String? = null,
 
-    @field:SerializedName("description")
+    @Element(name = "description")
     val description: String? = null,
 
-    @field:SerializedName("guid")
+    @Element(name = "guid")
     val guid: String? = null,
 
-    @field:SerializedName("title")
+    @Element(name = "title")
     val title: String? = null,
 
-    @field:SerializedName("category")
+    @Element(name = "category")
     val category: String? = null,
 
-    @field:SerializedName("pubDate")
+    @Element(name = "pubDate")
     val pubDate: String? = null
 )

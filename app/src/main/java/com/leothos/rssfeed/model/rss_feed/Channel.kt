@@ -1,42 +1,26 @@
 package com.leothos.rssfeed.model.rss_feed
 
-import com.google.gson.annotations.SerializedName
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.ElementList
+import org.simpleframework.xml.Root
 
+
+@Root(name = "channel", strict= false)
 data class Channel(
 
-	@field:SerializedName("copyright")
-	val copyright: String? = null,
+    @Element(name = "copyright")
+    val copyright: String? = null,
 
-	@field:SerializedName("item")
-	val item: List<Item?>? = null,
+    @ElementList(name = "item")
+    val item: List<Item?>? = null,
 
-	@field:SerializedName("docs")
-	val docs: String? = null,
+    @Element(name = "lastBuildDate")
+    val lastBuildDate: String? = null,
 
-	@field:SerializedName("lastBuildDate")
-	val lastBuildDate: String? = null,
+    @Element(name = "link")
+    val link: String? = null,
 
-	@field:SerializedName("link")
-	val link: String? = null,
+    @Element(name = "title")
+    val title: String? = null
 
-	@field:SerializedName("description")
-	val description: String? = null,
-
-	@field:SerializedName("language")
-	val language: String? = null,
-
-	@field:SerializedName("title")
-	val title: String? = null,
-
-	@field:SerializedName("category")
-	val category: String? = null,
-
-	@field:SerializedName("managingEditor")
-	val managingEditor: String? = null,
-
-	@field:SerializedName("webMaster")
-	val webMaster: String? = null,
-
-	@field:SerializedName("ttl")
-	val ttl: String? = null
 )

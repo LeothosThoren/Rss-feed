@@ -1,9 +1,12 @@
 package com.leothos.rssfeed.model.rss_feed
 
-import com.google.gson.annotations.SerializedName
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.Root
 
+
+@Root(name = "image", strict = false)
 data class Image(
 
-    @field:SerializedName("url")
+    @Element(name = "url")
     val url: String? = null
 )

@@ -1,6 +1,7 @@
 package com.leothos.rssfeed.injection.component
 
-import com.leothos.rssfeed.injection.NetworkModule
+import com.leothos.rssfeed.injection.module.NetworkModule
+import com.leothos.rssfeed.ui.view_model.RssArticleViewModel
 import com.leothos.rssfeed.ui.view_model.RssFeedListViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -16,6 +17,12 @@ interface ViewModelInjector {
      * @param rssFeedListViewModel rssFeedListViewModel in which to inject the dependencies
      */
     fun inject(rssFeedListViewModel: RssFeedListViewModel)
+
+    /**
+     * Injects required dependencies into the specified rssFeedListViewModel.
+     * @param rssArticleViewModel rssFeedListViewModel in which to inject the dependencies
+     */
+    fun inject(rssArticleViewModel: RssArticleViewModel)
 
     @Component.Builder
     interface Builder {

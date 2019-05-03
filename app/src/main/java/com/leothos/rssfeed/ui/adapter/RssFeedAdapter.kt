@@ -6,13 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.databinding.ItemRssFeedBinding
-import com.leothos.rssfeed.model.Rss
 import com.leothos.rssfeed.model.rss_feed.Item
 import com.leothos.rssfeed.ui.view_model.RssArticleViewModel
 
 class RssFeedAdapter : RecyclerView.Adapter<RssFeedAdapter.ViewHolder>() {
 
-    private lateinit var rssFeedList: List<Rss>
+    private lateinit var rssFeedList: List<Item>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RssFeedAdapter.ViewHolder {
         val binding: ItemRssFeedBinding = DataBindingUtil.inflate(
@@ -30,7 +29,7 @@ class RssFeedAdapter : RecyclerView.Adapter<RssFeedAdapter.ViewHolder>() {
         holder.bind(rssFeedList[position])
     }
 
-    fun updateRssList(rssItem: List<Rss>) {
+    fun updateRssList(rssItem: List<Item>) {
         this.rssFeedList = rssItem
         notifyDataSetChanged()
     }
@@ -38,8 +37,8 @@ class RssFeedAdapter : RecyclerView.Adapter<RssFeedAdapter.ViewHolder>() {
     class ViewHolder(private val binding: ItemRssFeedBinding) : RecyclerView.ViewHolder(binding.root) {
         private val viewModel = RssArticleViewModel()
 
-        fun bind(rssFeed: Rss) {
-            viewModel.bind(rssFeed)
+        fun bind(rssFeed: Item?) {
+            rssFeed?.let { viewModel.bind(it) }
             binding.viewModel = viewModel
         }
     }
