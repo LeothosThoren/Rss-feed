@@ -2,24 +2,23 @@ package com.leothos.rssfeed.ui.view_model
 
 import androidx.lifecycle.MutableLiveData
 import com.leothos.rssfeed.base.BaseViewModel
-import com.leothos.rssfeed.model.rss_feed.Item
+import com.leothos.rssfeed.model.rss.ItemsItem
 
 class RssArticleViewModel : BaseViewModel() {
 
     private val rssArticleTitle = MutableLiveData<String>()
     private val rssArticlePubDate = MutableLiveData<String>()
-    private val rssChannelTitle = MutableLiveData<String>()
     private val rssArticleDescription = MutableLiveData<String>()
     private val rssArticleImageUrl = MutableLiveData<String>()
     private val rssArticleLinkUrl = MutableLiveData<String>()
 
-    fun bind(rssFeed: Item) {
-//        rssChannelTitle.value = rssFeed.channel?.title
+    fun bind(rssFeed: ItemsItem) {
         rssArticleTitle.value = rssFeed.title
         rssArticlePubDate.value = rssFeed.pubDate
         rssArticleDescription.value = rssFeed.description
-        rssArticleImageUrl.value = rssFeed.image?.url
+        rssArticleImageUrl.value = rssFeed.enclosure?.link
         rssArticleLinkUrl.value = rssFeed.link
+
     }
 
     fun getArticleTitle(): MutableLiveData<String> {
@@ -28,10 +27,6 @@ class RssArticleViewModel : BaseViewModel() {
 
     fun getArticlePubDate(): MutableLiveData<String> {
         return rssArticlePubDate
-    }
-
-    fun getChannelTitle(): MutableLiveData<String> {
-        return rssChannelTitle
     }
 
     fun getArticleDescription(): MutableLiveData<String> {

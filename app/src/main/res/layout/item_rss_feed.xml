@@ -8,29 +8,31 @@
     <LinearLayout android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginEnd="16dp"
-                  android:layout_marginStart="16dp">
+                  android:layout_margin="16dp">
 
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/image_dimen"
+                android:background="@drawable/round_corner_background"
                 app:srcCompat="@android:drawable/ic_menu_gallery"
-                android:id="@+id/item_image"
                 app:mutableImage="@{viewModel.getArticleImage()}"
-                android:scaleType="centerCrop" android:adjustViewBounds="true"/>
+                android:id="@+id/item_image"
+                android:scaleType="centerCrop"/>
         <TextView
                 android:text="@string/item_title"
+                android:padding="@dimen/padding_dimen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_title"
                 app:mutableText="@{viewModel.getArticleTitle()}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Menu"/>
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_dimen"
                 android:id="@+id/item_date"
                 app:mutableText="@{viewModel.getArticlePubDate()}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:text="@string/item_date"/>
     </LinearLayout>
 </layout>

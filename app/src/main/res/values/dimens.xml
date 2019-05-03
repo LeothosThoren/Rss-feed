@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_dimen">140dp</dimen>
+    <dimen name="corner_radius_dimen">5dp</dimen>
+    <dimen name="padding_dimen">2dp</dimen>
+    <dimen name="line_spacing_dimen">6dp</dimen>
+</resources>

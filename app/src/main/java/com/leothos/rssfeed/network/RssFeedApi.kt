@@ -1,7 +1,6 @@
 package com.leothos.rssfeed.network
 
-import com.leothos.rssfeed.model.Rss
-import com.leothos.rssfeed.model.rss_feed.Item
+import com.leothos.rssfeed.model.rss.RssFeed
 import io.reactivex.Observable
 import retrofit2.http.GET
 
@@ -14,6 +13,6 @@ interface RssFeedApi {
      * Get the list of the pots from the Rss feed
      */
 
-    @GET("rss.xml")
-    fun getRssFeeds(): Observable<Rss>
+    @GET("api.json?rss_url=https://www.jeuxactu.com/rss/news.rss")
+    fun getRssFeeds(): Observable<RssFeed>
 }
