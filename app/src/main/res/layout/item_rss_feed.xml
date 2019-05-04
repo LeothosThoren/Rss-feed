@@ -17,7 +17,7 @@
                 app:srcCompat="@android:drawable/ic_menu_gallery"
                 app:mutableImage="@{viewModel.getArticleImage()}"
                 android:id="@+id/item_image"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitXY"/>
         <TextView
                 android:text="@string/item_title"
                 android:padding="@dimen/padding_dimen"

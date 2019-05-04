@@ -18,7 +18,6 @@ class RssArticleViewModel : BaseViewModel() {
         rssArticleDescription.value = rssFeed.description
         rssArticleImageUrl.value = rssFeed.enclosure?.link
         rssArticleLinkUrl.value = rssFeed.link
-
     }
 
     fun getArticleTitle(): MutableLiveData<String> {

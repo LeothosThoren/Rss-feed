@@ -11,6 +11,43 @@
             android:layout_height="match_parent"
             tools:context=".ui.MainActivity">
 
+        <!-- Toolbar -->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/main_toolbar_custom"
+                android:weightSum="100">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_action_name"
+                    android:layout_gravity="start"
+                    android:id="@+id/return_button_arrow" android:layout_weight="10"/>
+            <TextView
+                    android:textAlignment="textEnd"
+                    android:ellipsize="end"
+                    android:maxLength="15"
+                    android:singleLine="true"
+                    mutableText="@{viewModel.getRssFeedTitle}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/main_toolbar_title"
+                    android:layout_weight="70" android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_check" android:id="@+id/check_button"
+                    android:layout_weight="10"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_setting"
+                    android:id="@+id/settings_button" android:layout_weight="10"/>
+        </LinearLayout>
 
         <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -27,12 +64,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:adapter="@{viewModel.getRssFeedAdapter()}"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/rss_feed_List"
-                tools:listitem="@layout/item_rss_feed"/>
+                tools:listitem="@layout/item_rss_feed"
+                app:layout_constraintTop_toBottomOf="@+id/main_toolbar_custom"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

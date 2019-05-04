@@ -22,6 +22,7 @@ class RssFeedListViewModel : BaseViewModel() {
     // val
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
+    val rssFeedTitle: MutableLiveData<String> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadRssFeed() }
     val rssFeedAdapter: RssFeedAdapter = RssFeedAdapter()
 
@@ -66,9 +67,10 @@ class RssFeedListViewModel : BaseViewModel() {
      *
      * */
 
-    private fun onRetrieveRssFeedListSuccess(rssFeedList: RssFeed) {
-        Log.d("Debug", "first content = ${rssFeedList.items?.size}")
-        rssFeedAdapter.updateRssList(rssFeedList.items as List<ItemsItem>)
+    private fun onRetrieveRssFeedListSuccess(rssFeed: RssFeed) {
+        Log.d("Debug", "first content = ${rssFeed.items?.size}")
+        rssFeedAdapter.updateRssList(rssFeed.items as List<ItemsItem>)
+        rssFeedTitle.value = rssFeed.feed?.title
     }
 
     private fun onRetrieveRssFeedListError() {

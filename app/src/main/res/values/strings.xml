@@ -5,4 +5,8 @@
     <string name="rss_error">An error occurred while loading the rss feed</string>
     <string name="item_title">Title</string>
     <string name="item_date">Publication date</string>
+    <string name="title_main_toolbar">Title</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

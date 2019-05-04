@@ -2,6 +2,8 @@ package com.leothos.rssfeed.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.databinding.ActivityMainBinding
+import com.leothos.rssfeed.model.rss.ItemsItem
+import com.leothos.rssfeed.ui.adapter.RssFeedAdapter
 import com.leothos.rssfeed.ui.view_model.RssFeedListViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
+        })
+
+        viewModel.rssFeedAdapter.setOnItemClickListener(object : RssFeedAdapter.OnItemClickListener{
+            override fun onClick(view: View, data: ItemsItem) {
+                Toast.makeText(applicationContext, data.title, Toast.LENGTH_SHORT).show()
+            }
         })
 
         binding.viewModel = viewModel
