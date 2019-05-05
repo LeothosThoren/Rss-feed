@@ -1,6 +1,7 @@
-package com.leothos.rssfeed.ui
+package com.leothos.rssfeed.ui.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.leothos.rssfeed.databinding.ActivityMainBinding
 import com.leothos.rssfeed.model.rss.ItemsItem
 import com.leothos.rssfeed.ui.adapter.RssFeedAdapter
 import com.leothos.rssfeed.ui.view_model.RssFeedListViewModel
+import com.leothos.rssfeed.utils.EXTRA_INTENT_ITEM
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,9 +49,15 @@ class MainActivity : AppCompatActivity() {
             if (errorMessage != null) showError(errorMessage) else hideError()
         })
 
+        /**
+         * Perform the click thanks to a listener on each item of the list to open the detail activity
+         * */
         viewModel.rssFeedAdapter.setOnItemClickListener(object : RssFeedAdapter.OnItemClickListener{
             override fun onClick(view: View, data: ItemsItem) {
                 Toast.makeText(applicationContext, data.title, Toast.LENGTH_SHORT).show()
+                val intent = Intent(applicationContext, DetailActivity::class.java)
+                intent.putExtra(EXTRA_INTENT_ITEM, data)
+                startActivity(intent)
             }
         })
 

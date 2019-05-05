@@ -1,13 +1,18 @@
 package com.leothos.rssfeed.model.rss
 
+import android.os.Parcelable
 import javax.annotation.Generated
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 @Generated("com.robohorse.robopojogenerator")
+@Parcelize
 data class ItemsItem(
 
 	@Json(name="thumbnail")
 	val thumbnail: String? = null,
+
 
 	@Json(name="enclosure")
 	val enclosure: Enclosure? = null,
@@ -24,9 +29,6 @@ data class ItemsItem(
 	@Json(name="description")
 	val description: String? = null,
 
-	@Json(name="categories")
-	val categories: List<Any?>? = null,
-
 	@Json(name="title")
 	val title: String? = null,
 
@@ -35,4 +37,4 @@ data class ItemsItem(
 
 	@Json(name="content")
 	val content: String? = null
-)
+):Parcelable

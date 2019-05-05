@@ -5,71 +5,95 @@
         <variable name="viewModel"
                   type="com.leothos.rssfeed.ui.view_model.RssFeedListViewModel"/>
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.MainActivity">
+            android:fitsSystemWindows="true"
+            tools:context=".ui.activity.MainActivity">
 
-        <!-- Toolbar -->
-        <LinearLayout
-                android:orientation="horizontal"
+        <!--App bar Layout -->
+        <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:padding="8dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
+                android:background="?attr/colorBackgroundFloating"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/main_toolbar_custom"
-                android:weightSum="100">
+                android:id="@+id/appBarLayout"
+        >
+            <!-- Toolbar -->
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:gravity="center"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/main_toolbar_custom"
+                    android:weightSum="100">
 
-            <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_action_name"
-                    android:layout_gravity="start"
-                    android:id="@+id/return_button_arrow" android:layout_weight="10"/>
-            <TextView
-                    android:textAlignment="textEnd"
-                    android:ellipsize="end"
-                    android:maxLength="15"
-                    android:singleLine="true"
-                    mutableText="@{viewModel.getRssFeedTitle}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" android:id="@+id/main_toolbar_title"
-                    android:layout_weight="70" android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_check" android:id="@+id/check_button"
-                    android:layout_weight="10"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_setting"
-                    android:id="@+id/settings_button" android:layout_weight="10"/>
-        </LinearLayout>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_action_name"
+                        android:id="@+id/return_button_arrow"
+                        android:layout_weight="10"/>
+                <TextView
+                        android:textAlignment="textEnd"
+                        android:ellipsize="end"
+                        android:maxLength="15"
+                        android:singleLine="true"
+                        mutableText="@{viewModel.getRssFeedTitle}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:id="@+id/main_toolbar_title"
+                        android:layout_weight="70"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" app:srcCompat="@drawable/ic_check"
+                        android:id="@+id/check_button"
+                        android:layout_weight="10"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" app:srcCompat="@drawable/ic_setting"
+                        android:id="@+id/settings_button" android:layout_weight="10"/>
+            </LinearLayout>
 
-        <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
-                android:id="@+id/progressBar"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
+        <!-- Feed List -->
         <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:adapter="@{viewModel.getRssFeedAdapter()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/rss_feed_List"
                 tools:listitem="@layout/item_rss_feed"
-                app:layout_constraintTop_toBottomOf="@+id/main_toolbar_custom"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <!-- Progress bar -->
+                <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+                        android:id="@+id/progressBar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
 
