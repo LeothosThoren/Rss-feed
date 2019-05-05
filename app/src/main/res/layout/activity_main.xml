@@ -34,22 +34,15 @@
                     android:id="@+id/main_toolbar_custom"
                     android:weightSum="100">
 
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_action_name"
-                        android:id="@+id/return_button_arrow"
-                        android:layout_weight="10"/>
                 <TextView
                         android:textAlignment="textEnd"
                         android:ellipsize="end"
-                        android:maxLength="15"
                         android:singleLine="true"
                         mutableText="@{viewModel.getRssFeedTitle}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" android:id="@+id/main_toolbar_title"
                         android:layout_weight="70"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textSize="15sp"/>
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/ic_check"

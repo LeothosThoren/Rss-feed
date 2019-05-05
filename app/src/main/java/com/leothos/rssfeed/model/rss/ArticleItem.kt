@@ -8,7 +8,7 @@ import kotlinx.android.parcel.RawValue
 
 @Generated("com.robohorse.robopojogenerator")
 @Parcelize
-data class ItemsItem(
+data class ArticleItem(
 
 	@Json(name="thumbnail")
 	val thumbnail: String? = null,

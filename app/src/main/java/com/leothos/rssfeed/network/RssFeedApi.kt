@@ -10,9 +10,10 @@ import retrofit2.http.GET
  */
 interface RssFeedApi {
     /**
-     * Get the list of the pots from the Rss feed
+     * Get the list from the Rss feed
+     * Using retrofit and RxJava
      */
 
-    @GET("api.json?rss_url=https://www.jeuxactu.com/rss/news.rss")
+    @GET("api.json?rss_url=https://www.jeuxactu.com/rss/ja.rss")
     fun getRssFeeds(): Observable<RssFeed>
 }

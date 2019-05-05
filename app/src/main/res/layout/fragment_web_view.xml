@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/web_view_container"
-             tools:context=".ui.fragment.WebViewFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/web_view_container"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.WebViewFragment">
 
-    <!-- Toolbar -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="horizontal"
+    <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:elevation="@dimen/padding_dimen"
+            android:id="@+id/web_view_toolbar"
             android:layout_height="?attr/actionBarSize"
-            android:id="@+id/detail_toolbar_custom"
+            android:background="@android:color/background_light"
+            android:elevation="@dimen/padding_dimen"
+            app:navigationIcon="@drawable/ic_arrow_back" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_arrow_back"
-                android:id="@+id/web_view_return_button_arrow"
-                android:layout_weight="10" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
-
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_share"
-                android:id="@+id/web_view_share_button"
-                android:layout_weight="10"
-                app:layout_constraintEnd_toStartOf="@+id/web_view_settings_button"
-                android:layout_marginEnd="16dp" app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="16dp"/>
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_setting"
-                android:id="@+id/web_view_settings_button" android:layout_weight="10"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="16dp" android:layout_marginTop="16dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="24dp"/>
 
     <ProgressBar
             android:layout_gravity="center"
@@ -53,10 +31,18 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <WebView android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:id="@+id/web_view" app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintTop_toBottomOf="@+id/detail_toolbar_custom"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/web_view_swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <WebView android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:id="@+id/web_view" app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/detail_toolbar_custom"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

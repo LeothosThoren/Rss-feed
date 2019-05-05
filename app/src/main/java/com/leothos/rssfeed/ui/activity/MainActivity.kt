@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.databinding.ActivityMainBinding
-import com.leothos.rssfeed.model.rss.ItemsItem
+import com.leothos.rssfeed.model.rss.ArticleItem
 import com.leothos.rssfeed.ui.adapter.RssFeedAdapter
 import com.leothos.rssfeed.ui.view_model.RssFeedListViewModel
 import com.leothos.rssfeed.utils.EXTRA_INTENT_ITEM
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
          * Perform the click thanks to a listener on each item of the list to open the detail activity
          * */
         viewModel.rssFeedAdapter.setOnItemClickListener(object : RssFeedAdapter.OnItemClickListener{
-            override fun onClick(view: View, data: ItemsItem) {
+            override fun onClick(view: View, data: ArticleItem) {
                 Toast.makeText(applicationContext, data.title, Toast.LENGTH_SHORT).show()
                 val intent = Intent(applicationContext, DetailActivity::class.java)
                 intent.putExtra(EXTRA_INTENT_ITEM, data)

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.base.BaseViewModel
-import com.leothos.rssfeed.model.rss.ItemsItem
+import com.leothos.rssfeed.model.rss.ArticleItem
 import com.leothos.rssfeed.model.rss.RssFeed
 import com.leothos.rssfeed.network.RssFeedApi
 import com.leothos.rssfeed.ui.adapter.RssFeedAdapter
@@ -69,7 +69,7 @@ class RssFeedListViewModel : BaseViewModel() {
 
     private fun onRetrieveRssFeedListSuccess(rssFeed: RssFeed) {
         Log.d("Debug", "first content = ${rssFeed.items?.size}")
-        rssFeedAdapter.updateRssList(rssFeed.items as List<ItemsItem>)
+        rssFeedAdapter.updateRssList(rssFeed.items as List<ArticleItem>)
         rssFeedTitle.value = rssFeed.feed?.title
     }
 

@@ -8,6 +8,9 @@ import com.leothos.rssfeed.ui.view_model.RssArticleViewModel
 import com.leothos.rssfeed.ui.view_model.RssFeedListViewModel
 
 abstract class BaseViewModel : ViewModel() {
+    /**
+     * Dagger2 build configuration
+     * */
     private val injector: ViewModelInjector = DaggerViewModelInjector
         .builder()
         .networkModule(NetworkModule)

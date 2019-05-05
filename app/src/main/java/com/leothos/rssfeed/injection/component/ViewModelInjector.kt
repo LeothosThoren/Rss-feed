@@ -7,7 +7,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 /**
- * Component providing inject() methods for presenters.
+ * Component providing inject() methods for presenters / controllers.
  */
 @Singleton
 @Component(modules = [(NetworkModule::class)])
