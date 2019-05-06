@@ -13,15 +13,12 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.leothos.rssfeed.R
 import com.leothos.rssfeed.ui.view_model.RssArticleViewModel
 import com.leothos.rssfeed.utils.jsInjection2
 import kotlinx.android.synthetic.main.fragment_web_view.*
-
-
 
 
 class WebViewFragment : Fragment() {
@@ -106,7 +103,7 @@ class WebViewFragment : Fragment() {
 
     // todo fix it
     private fun configureSwipeRefreshLayout() {
-       web_view_swipe_layout.setOnRefreshListener { this.getViewModel() }
+        web_view_swipe_layout.setOnRefreshListener { this.getViewModel() }
     }
 
     private fun getViewModel() {
