@@ -25,6 +25,7 @@ class WebViewFragment : Fragment() {
 
     private lateinit var webView: WebView
     private lateinit var sharedViewModel: RssArticleViewModel
+    private lateinit var webUrl: String
 
 
     override fun onCreateView(
@@ -43,9 +44,8 @@ class WebViewFragment : Fragment() {
             sharedViewModel.getArticleLink().observe(this, Observer { url ->
                 webView = view.findViewById(R.id.web_view)
 
-
+                webUrl = url
                 configureToolBar(url)
-                configureSwipeRefreshLayout()
 
                 webView.webViewClient = object : WebViewClient() {
 
@@ -101,12 +101,17 @@ class WebViewFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    // todo fix it
-    private fun configureSwipeRefreshLayout() {
-        web_view_swipe_layout.setOnRefreshListener { this.getViewModel() }
+    /**
+     *@param url the url to refresh
+     * Refresh the web view with vertical gesture swipe
+     *
+     * */
+    private fun configureSwipeRefreshLayout(url: String) {
+        web_view_swipe_layout.setOnRefreshListener { webView.loadUrl(url) }
     }
 
-    private fun getViewModel() {
-        sharedViewModel = ViewModelProviders.of(this).get(RssArticleViewModel::class.java)
+    override fun onResume() {
+        super.onResume()
+        configureSwipeRefreshLayout(webUrl)
     }
 }
