@@ -3,6 +3,7 @@ package com.leothos.rssfeed.ui.view_model
 import androidx.lifecycle.MutableLiveData
 import com.leothos.rssfeed.base.BaseViewModel
 import com.leothos.rssfeed.model.rss.ArticleItem
+import com.leothos.rssfeed.utils.dateFormatterFR
 
 class RssArticleViewModel : BaseViewModel() {
 
@@ -14,7 +15,7 @@ class RssArticleViewModel : BaseViewModel() {
 
     fun bind(rssFeed: ArticleItem) {
         rssArticleTitle.value = rssFeed.title
-        rssArticlePubDate.value = rssFeed.pubDate
+        rssArticlePubDate.value = dateFormatterFR(rssFeed.pubDate)
         rssArticleDescription.value = rssFeed.description
         rssArticleImageUrl.value = rssFeed.enclosure?.link
         rssArticleLinkUrl.value = rssFeed.link
