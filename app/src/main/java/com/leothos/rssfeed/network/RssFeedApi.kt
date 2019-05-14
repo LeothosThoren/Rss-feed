@@ -15,6 +15,6 @@ interface RssFeedApi {
      * Using retrofit and RxJava
      */
 
-    @GET("api.json?rss_url=https://www.jeuxactu.com/rss/ja.rss&api_key=$apiKey")
+    @GET("v1/api.json?rss_url=https://www.jeuxactu.com/rss/ja.rss&api_key=$apiKey")
     fun getRssFeeds(): Observable<RssFeed>
 }

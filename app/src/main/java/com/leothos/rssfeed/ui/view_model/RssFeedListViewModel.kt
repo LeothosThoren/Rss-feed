@@ -43,6 +43,7 @@ class RssFeedListViewModel : BaseViewModel() {
                 },
 
                 {
+                    Log.d("Debug", "${it.message}")
                     onRetrieveRssFeedListError()
                 }
             )
